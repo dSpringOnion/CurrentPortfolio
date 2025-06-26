@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
             </h1>
             <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Building enterprise-scale applications and intelligent ML systems.
-              Specialized in full-stack development, machine learning, and scalable architectures that handle millions of users.
+              Specialized in full-stack development, machine learning, and scalable architectures designed for growth.
             </p>
           </motion.div>
 
