@@ -55,8 +55,7 @@ app.post('/api/contact', async (req, res) => {
       return res.status(400).json({ error: 'Invalid email format' });
     }
 
-    // For demo purposes, we'll just log the message
-    // In production, you would configure nodemailer with your email service
+    // Log the message for debugging
     console.log('Contact form submission:', {
       name,
       email,
@@ -65,8 +64,7 @@ app.post('/api/contact', async (req, res) => {
       timestamp: new Date().toISOString(),
     });
 
-    // Uncomment and configure for actual email sending:
-    /*
+    // Send email
     const transporter = createTransporter();
     
     const mailOptions = {
@@ -84,7 +82,6 @@ app.post('/api/contact', async (req, res) => {
     };
 
     await transporter.sendMail(mailOptions);
-    */
 
     res.status(200).json({ 
       message: 'Message sent successfully!',

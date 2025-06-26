@@ -69,8 +69,8 @@ const Contact: React.FC = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'your@email.com',
-      href: 'mailto:your@email.com',
+      value: 'dbpark.dev@gmail.com',
+      href: 'mailto:dbpark.dev@gmail.com',
     },
     {
       icon: Phone,
