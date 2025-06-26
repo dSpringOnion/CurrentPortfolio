@@ -25,6 +25,7 @@ const Projects: React.FC = () => {
       technologies: ["Next.js", "React", "TypeScript", "PostgreSQL", "Express", "Tailwind CSS", "Prisma"],
       category: "fullstack",
       image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
+      demoUrl: "https://humble-creation-production.up.railway.app/products",
       githubUrl: "https://github.com/danielpark/inventory-system",
       featured: true
     },
@@ -35,6 +36,7 @@ const Projects: React.FC = () => {
       technologies: ["Python", "Scikit-learn", "Pandas", "NumPy", "Matplotlib", "Jupyter", "XGBoost"],
       category: "ml",
       image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop",
+      demoUrl: "https://heartdiseasepredictor-production.up.railway.app/",
       githubUrl: "https://github.com/danielpark/heart-disease-ml",
       featured: true
     },
@@ -45,6 +47,7 @@ const Projects: React.FC = () => {
       technologies: ["Python", "TensorFlow", "Keras", "OpenCV", "Pandas", "Plotly", "AWS"],
       category: "ml",
       image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop",
+      demoUrl: "https://serene-dedication-production-63d2.up.railway.app/",
       githubUrl: "https://github.com/danielpark/driving-behavior-ml",
       featured: true
     },
