@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink, Github, Filter } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Github, Filter, Key, X, Send } from 'lucide-react';
 
 interface Project {
   id: number;
@@ -16,6 +16,14 @@ interface Project {
 
 const Projects: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [showAccessModal, setShowAccessModal] = useState(false);
+  const [accessForm, setAccessForm] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const projects: Project[] = [
     {
@@ -107,6 +115,39 @@ const Projects: React.FC = () => {
     },
   };
 
+  const handleAccessRequest = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmissionStatus('loading');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: accessForm.name,
+          email: accessForm.email,
+          subject: 'Demo Access Request - Inventory Management System',
+          message: `Demo Access Request\n\nName: ${accessForm.name}\nEmail: ${accessForm.email}\nCompany: ${accessForm.company}\n\nMessage:\n${accessForm.message}\n\nRequesting access to the Inventory Management System demo.`
+        }),
+      });
+
+      if (response.ok) {
+        setSubmissionStatus('success');
+        setTimeout(() => {
+          setShowAccessModal(false);
+          setAccessForm({ name: '', email: '', company: '', message: '' });
+          setSubmissionStatus('idle');
+        }, 2000);
+      } else {
+        setSubmissionStatus('error');
+      }
+    } catch (error) {
+      setSubmissionStatus('error');
+    }
+  };
+
   return (
     <section id="projects" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -189,29 +230,177 @@ const Projects: React.FC = () => {
                 </div>
                 
                 <div className="flex gap-4">
-                  {project.demoUrl && (
-                    <a
-                      href={project.demoUrl}
-                      className="flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200"
-                    >
-                      <ExternalLink size={16} />
-                      Live Demo
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      className="flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200"
-                    >
-                      <Github size={16} />
-                      Code
-                    </a>
+                  {project.id === 1 ? (
+                    <>
+                      <button
+                        onClick={() => setShowAccessModal(true)}
+                        className="flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200"
+                      >
+                        <Key size={16} />
+                        Request Access
+                      </button>
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          className="flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200"
+                        >
+                          <Github size={16} />
+                          Code
+                        </a>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {project.demoUrl && (
+                        <a
+                          href={project.demoUrl}
+                          className="flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200"
+                        >
+                          <ExternalLink size={16} />
+                          Live Demo
+                        </a>
+                      )}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          className="flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200"
+                        >
+                          <Github size={16} />
+                          Code
+                        </a>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Demo Access Request Modal */}
+        <AnimatePresence>
+          {showAccessModal && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+              onClick={() => setShowAccessModal(false)}
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="bg-white rounded-xl shadow-xl p-6 w-full max-w-md"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-xl font-bold text-gray-900">Request Demo Access</h3>
+                  <button
+                    onClick={() => setShowAccessModal(false)}
+                    className="text-gray-400 hover:text-gray-600"
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
+                
+                <p className="text-gray-600 mb-6">
+                  Request access to the Inventory Management System demo. I'll send you the login credentials.
+                </p>
+
+                <form onSubmit={handleAccessRequest} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={accessForm.name}
+                      onChange={(e) => setAccessForm({ ...accessForm, name: e.target.value })}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      placeholder="Your full name"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={accessForm.email}
+                      onChange={(e) => setAccessForm({ ...accessForm, email: e.target.value })}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Company
+                    </label>
+                    <input
+                      type="text"
+                      value={accessForm.company}
+                      onChange={(e) => setAccessForm({ ...accessForm, company: e.target.value })}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      placeholder="Your company name"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Message
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={accessForm.message}
+                      onChange={(e) => setAccessForm({ ...accessForm, message: e.target.value })}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      placeholder="Tell me about your interest in the demo..."
+                    />
+                  </div>
+
+                  {submissionStatus === 'success' && (
+                    <div className="text-green-600 text-sm">
+                      ✓ Request sent! I'll email you the demo credentials shortly.
+                    </div>
+                  )}
+                  
+                  {submissionStatus === 'error' && (
+                    <div className="text-red-600 text-sm">
+                      ✗ Failed to send request. Please try again.
+                    </div>
+                  )}
+
+                  <div className="flex gap-3 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => setShowAccessModal(false)}
+                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={submissionStatus === 'loading'}
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 transition-colors"
+                    >
+                      {submissionStatus === 'loading' ? (
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
+                      ) : (
+                        <Send size={16} />
+                      )}
+                      {submissionStatus === 'loading' ? 'Sending...' : 'Send Request'}
+                    </button>
+                  </div>
+                </form>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
