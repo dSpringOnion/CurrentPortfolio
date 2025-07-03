@@ -1,6 +1,13 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
 
 interface FormData {
   name: string;
@@ -10,26 +17,28 @@ interface FormData {
 }
 
 interface FormStatus {
-  type: 'idle' | 'loading' | 'success' | 'error';
+  type: "idle" | "loading" | "success" | "error";
   message: string;
 }
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-  
-  const [status, setStatus] = useState<FormStatus>({
-    type: 'idle',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const [status, setStatus] = useState<FormStatus>({
+    type: "idle",
+    message: "",
+  });
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -37,30 +46,31 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus({ type: 'loading', message: 'Sending message...' });
+    setStatus({ type: "loading", message: "Sending message..." });
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
         setStatus({
-          type: 'success',
-          message: 'Thank you! Your message has been sent successfully.',
+          type: "success",
+          message: "Thank you! Your message has been sent successfully.",
         });
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
-        throw new Error('Failed to send message');
+        throw new Error("Failed to send message");
       }
     } catch (error) {
       setStatus({
-        type: 'error',
-        message: 'Sorry, there was an error sending your message. Please try again.',
+        type: "error",
+        message:
+          "Sorry, there was an error sending your message. Please try again.",
       });
     }
   };
@@ -68,21 +78,21 @@ const Contact: React.FC = () => {
   const contactInfo = [
     {
       icon: Mail,
-      label: 'Email',
-      value: 'dbpark.dev@gmail.com',
-      href: 'mailto:dbpark.dev@gmail.com',
+      label: "Email",
+      value: "dbpark.dev@gmail.com",
+      href: "mailto:dbpark.dev@gmail.com",
     },
     {
       icon: Phone,
-      label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567',
+      label: "Phone",
+      value: "+1 (956) 875-4663",
+      href: "tel:+19568574663",
     },
     {
       icon: MapPin,
-      label: 'Location',
-      value: 'San Francisco, CA',
-      href: 'https://maps.google.com',
+      label: "Location",
+      value: "West Lafayette, IN",
+      href: "https://maps.google.com",
     },
   ];
 
@@ -96,9 +106,12 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Get In Touch
+          </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you.
+            Have a project in mind or want to collaborate? I'd love to hear from
+            you.
           </p>
         </motion.div>
 
@@ -115,9 +128,9 @@ const Contact: React.FC = () => {
                 Let's start a conversation
               </h3>
               <p className="text-gray-600 text-lg leading-relaxed">
-                I'm always interested in new opportunities, challenging projects, 
-                and meeting fellow developers. Whether you have a project in mind 
-                or just want to connect, feel free to reach out.
+                I'm always interested in new opportunities, challenging
+                projects, and meeting fellow developers. Whether you have a
+                project in mind or just want to connect, feel free to reach out.
               </p>
             </div>
 
@@ -136,7 +149,9 @@ const Contact: React.FC = () => {
                     <info.icon size={20} className="text-primary-600" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-500">{info.label}</p>
+                    <p className="text-sm font-medium text-gray-500">
+                      {info.label}
+                    </p>
                     <p className="text-gray-900 font-medium">{info.value}</p>
                   </div>
                 </motion.a>
@@ -154,7 +169,10 @@ const Contact: React.FC = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Name
                   </label>
                   <input
@@ -169,7 +187,10 @@ const Contact: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Email
                   </label>
                   <input
@@ -186,7 +207,10 @@ const Contact: React.FC = () => {
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Subject
                 </label>
                 <input
@@ -202,7 +226,10 @@ const Contact: React.FC = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -217,37 +244,37 @@ const Contact: React.FC = () => {
                 />
               </div>
 
-              {status.type !== 'idle' && (
+              {status.type !== "idle" && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className={`flex items-center gap-2 p-4 rounded-lg ${
-                    status.type === 'success'
-                      ? 'bg-green-50 text-green-800'
-                      : status.type === 'error'
-                      ? 'bg-red-50 text-red-800'
-                      : 'bg-blue-50 text-blue-800'
+                    status.type === "success"
+                      ? "bg-green-50 text-green-800"
+                      : status.type === "error"
+                      ? "bg-red-50 text-red-800"
+                      : "bg-blue-50 text-blue-800"
                   }`}
                 >
-                  {status.type === 'success' && <CheckCircle size={20} />}
-                  {status.type === 'error' && <AlertCircle size={20} />}
+                  {status.type === "success" && <CheckCircle size={20} />}
+                  {status.type === "error" && <AlertCircle size={20} />}
                   <span>{status.message}</span>
                 </motion.div>
               )}
 
               <motion.button
                 type="submit"
-                disabled={status.type === 'loading'}
+                disabled={status.type === "loading"}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full flex items-center justify-center gap-2 px-8 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {status.type === 'loading' ? (
+                {status.type === "loading" ? (
                   <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
                 ) : (
                   <Send size={20} />
                 )}
-                {status.type === 'loading' ? 'Sending...' : 'Send Message'}
+                {status.type === "loading" ? "Sending..." : "Send Message"}
               </motion.button>
             </form>
           </motion.div>

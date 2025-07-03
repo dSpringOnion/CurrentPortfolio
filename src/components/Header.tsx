@@ -23,9 +23,9 @@ const Header: React.FC = () => {
   ];
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
+    { icon: Github, href: 'https://github.com/dSpringOnion', label: 'GitHub' },
     { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:your@email.com', label: 'Email' },
+    { icon: Mail, href: 'mailto:dbpark.dev@gmail.com', label: 'Email' },
   ];
 
   return (

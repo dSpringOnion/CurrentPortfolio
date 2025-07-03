@@ -34,7 +34,7 @@ const Projects: React.FC = () => {
       category: "fullstack",
       image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
       demoUrl: "https://humble-creation-production.up.railway.app/products",
-      githubUrl: "https://github.com/danielpark/inventory-system",
+      githubUrl: "https://github.com/dSpringOnion/inventoryManagment",
       featured: true
     },
     {
@@ -45,7 +45,7 @@ const Projects: React.FC = () => {
       category: "ml",
       image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop",
       demoUrl: "https://heartdiseasepredictor-production.up.railway.app/",
-      githubUrl: "https://github.com/danielpark/heart-disease-ml",
+      githubUrl: "https://github.com/dSpringOnion/heartDiseasePredictor",
       featured: true
     },
     {
@@ -56,7 +56,7 @@ const Projects: React.FC = () => {
       category: "ml",
       image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop",
       demoUrl: "https://serene-dedication-production-63d2.up.railway.app/",
-      githubUrl: "https://github.com/danielpark/driving-behavior-ml",
+      githubUrl: "https://github.com/dSpringOnion/MLCBA",
       featured: true
     },
     {
@@ -66,7 +66,6 @@ const Projects: React.FC = () => {
       technologies: ["React", "D3.js", "Node.js", "Redis", "PostgreSQL", "Socket.io"],
       category: "fullstack",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-      githubUrl: "https://github.com/danielpark/analytics-dashboard",
       featured: false
     },
     {
@@ -76,7 +75,6 @@ const Projects: React.FC = () => {
       technologies: ["Node.js", "Express", "Docker", "Kubernetes", "Redis", "Prometheus"],
       category: "backend",
       image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop",
-      githubUrl: "https://github.com/danielpark/api-gateway",
       featured: false
     }
   ];
