@@ -49,7 +49,8 @@ const Contact: React.FC = () => {
     setStatus({ type: "loading", message: "Sending message..." });
 
     try {
-      const response = await fetch("/api/contact", {
+      const apiUrl = (import.meta as any).env?.VITE_API_URL || "/api/contact";
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
