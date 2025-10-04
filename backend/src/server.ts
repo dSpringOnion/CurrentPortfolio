@@ -81,18 +81,21 @@ app.post('/api/contact', async (req: Request, res: Response) => {
       `,
     };
 
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
 
-    res.status(200).json({ 
+    console.log('Email sent successfully:', info.messageId);
+
+    res.status(200).json({
       message: 'Message sent successfully!',
-      success: true 
+      success: true
     });
 
   } catch (error) {
     console.error('Error sending email:', error);
-    res.status(500).json({ 
+    console.error('Full error details:', JSON.stringify(error, null, 2));
+    res.status(500).json({
       error: 'Failed to send message. Please try again later.',
-      success: false 
+      success: false
     });
   }
 });
