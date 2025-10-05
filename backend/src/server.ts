@@ -19,22 +19,32 @@ interface ContactFormData {
 }
 
 const createTransporter = () => {
-  if (process.env.EMAIL_SERVICE === 'gmail') {
+  if (process.env.EMAIL_SERVICE === 'sendgrid') {
+    return nodemailer.createTransport({
+      host: 'smtp.sendgrid.net',
+      port: 587,
+      secure: false,
+      auth: {
+        user: 'apikey',
+        pass: process.env.SENDGRID_API_KEY,
+      },
+    });
+  } else if (process.env.EMAIL_SERVICE === 'gmail') {
     return nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD, // Use App Password for Gmail
+        pass: process.env.EMAIL_PASSWORD,
       },
-      connectionTimeout: 10000, // 10 seconds
+      connectionTimeout: 10000,
       greetingTimeout: 10000,
     });
   } else {
-    // SMTP configuration for other providers
+    // Generic SMTP configuration
     return nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
       port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: false, // true for 465, false for other ports
+      secure: false,
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD,
