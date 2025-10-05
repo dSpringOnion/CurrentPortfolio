@@ -26,6 +26,8 @@ const createTransporter = () => {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD, // Use App Password for Gmail
       },
+      connectionTimeout: 10000, // 10 seconds
+      greetingTimeout: 10000,
     });
   } else {
     // SMTP configuration for other providers
@@ -37,6 +39,8 @@ const createTransporter = () => {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD,
       },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
     });
   }
 };
