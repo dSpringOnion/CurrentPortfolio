@@ -87,6 +87,7 @@ const Projects: React.FC = () => {
       technologies: ["C++", "CMake", "Docker", "PostgreSQL", "Playwright", "Node.js"],
       category: "fullstack",
       image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=600&h=400&fit=crop",
+      githubUrl: "https://github.com/dSpringOnion/codequest",
       featured: false
     }
   ];
