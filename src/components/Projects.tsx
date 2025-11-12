@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Filter, Key, X, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ExternalLink, Github, Filter } from 'lucide-react';
 
 interface Project {
   id: number;
@@ -16,32 +16,24 @@ interface Project {
 
 const Projects: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
-  const [showAccessModal, setShowAccessModal] = useState(false);
-  const [accessForm, setAccessForm] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  });
-  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const projects: Project[] = [
     {
       id: 1,
-      title: "Inventory Management System",
-      description: "Enterprise-grade inventory management platform with real-time tracking, automated reordering, and comprehensive analytics. Built with modern full-stack architecture for scalability and performance.",
-      technologies: ["Next.js", "React", "TypeScript", "PostgreSQL", "Express", "Tailwind CSS", "Prisma"],
-      category: "fullstack",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
-      demoUrl: "https://humble-creation-production.up.railway.app/products",
-      githubUrl: "https://github.com/dSpringOnion/inventoryManagment",
+      title: "Vision-Based Vehicle Behavior Detector",
+      description: "AI-powered system for detecting dangerous driving behaviors in real-time using YOLOv8 and computer vision. Features ML classification for safe/risky/dangerous behavior with modern React + TypeScript frontend.",
+      technologies: ["Python", "Flask", "YOLOv8", "OpenCV", "React", "TypeScript", "Scikit-learn", "Tailwind CSS"],
+      category: "ml",
+      image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop",
+      demoUrl: "https://serene-dedication-production-63d2.up.railway.app/",
+      githubUrl: "https://github.com/dSpringOnion/MLCBA",
       featured: true
     },
     {
       id: 2,
-      title: "Heart Disease Detection Model",
-      description: "Machine learning model for early heart disease detection using clinical data. Achieved 94% accuracy with ensemble methods and feature engineering on 70,000+ patient records.",
-      technologies: ["Python", "Scikit-learn", "Pandas", "NumPy", "Matplotlib", "Jupyter", "XGBoost"],
+      title: "Heart Disease Risk Predictor",
+      description: "Production-grade ML application predicting heart disease risk using the renowned Cleveland Heart Disease dataset. Achieved 85-90% accuracy with ensemble methods including Random Forest and XGBoost.",
+      technologies: ["Python", "Scikit-learn", "XGBoost", "Streamlit", "Pandas", "NumPy"],
       category: "ml",
       image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop",
       demoUrl: "https://heartdiseasepredictor-production.up.railway.app/",
@@ -50,31 +42,51 @@ const Projects: React.FC = () => {
     },
     {
       id: 3,
-      title: "Vehicle Driving Behavior Analysis",
-      description: "Advanced ML model analyzing driving patterns to predict risky behavior and improve road safety. Processes real-time telematics data with 92% classification accuracy.",
-      technologies: ["Python", "TensorFlow", "Keras", "OpenCV", "Pandas", "Plotly", "AWS"],
-      category: "ml",
-      image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop",
-      demoUrl: "https://serene-dedication-production-63d2.up.railway.app/",
-      githubUrl: "https://github.com/dSpringOnion/MLCBA",
+      title: "E-commerce SaaS Boilerplate",
+      description: "Production-ready e-commerce boilerplate with visual page builder. Features drag-and-drop editor with 50+ pre-built components, Stripe payments, and comprehensive admin dashboard. Built with Next.js 15 and React 19.",
+      technologies: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Stripe", "shadcn/ui", "Puck"],
+      category: "fullstack",
+      image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600&h=400&fit=crop",
+      githubUrl: "https://github.com/dSpringOnion/ecommerceboilerplate",
       featured: true
     },
     {
       id: 4,
-      title: "Real-time Analytics Dashboard",
-      description: "High-performance dashboard processing millions of data points with sub-second query responses. Features interactive visualizations and automated reporting.",
-      technologies: ["React", "D3.js", "Node.js", "Redis", "PostgreSQL", "Socket.io"],
+      title: "Recipe Blog Platform",
+      description: "Modern full-stack recipe sharing platform with fuzzy search, ingredient scaling with smart unit conversions, video recipes via Cloudflare Stream, and magic link authentication. Built with Next.js 14 and tRPC.",
+      technologies: ["Next.js", "tRPC", "PostgreSQL", "Prisma", "Tailwind CSS", "Auth.js", "Cloudflare"],
       category: "fullstack",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-      featured: false
+      image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&h=400&fit=crop",
+      githubUrl: "https://github.com/dSpringOnion/recipeblog",
+      featured: true
     },
     {
       id: 5,
-      title: "Microservices API Gateway",
-      description: "Scalable API gateway handling 10M+ requests/day with intelligent load balancing, rate limiting, and comprehensive monitoring across distributed services.",
-      technologies: ["Node.js", "Express", "Docker", "Kubernetes", "Redis", "Prometheus"],
+      title: "DistCacheLayer",
+      description: "High-performance distributed in-memory cache built with modern C++17. Features sharded hash tables, LRU eviction, gRPC API, consistent hashing, and TLS encryption. Think Redis with distributed-first architecture.",
+      technologies: ["C++17", "gRPC", "Protobuf", "CMake", "Docker"],
       category: "backend",
       image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop",
+      githubUrl: "https://github.com/dSpringOnion/clidistcachelayer",
+      featured: true
+    },
+    {
+      id: 6,
+      title: "PowerBall ML Predictor",
+      description: "Comprehensive ML application for analyzing Powerball lottery numbers with interactive visualizations. Implements frequency analysis, pattern recognition, time series analysis, and neural networks with Jupyter notebooks.",
+      technologies: ["Python", "FastAPI", "Scikit-learn", "NumPy", "Pandas", "Matplotlib", "React", "TypeScript"],
+      category: "ml",
+      image: "https://images.unsplash.com/photo-1634128221889-82ed6efebfc3?w=600&h=400&fit=crop",
+      githubUrl: "https://github.com/dSpringOnion/lottopredictorml",
+      featured: false
+    },
+    {
+      id: 7,
+      title: "CodeQuest",
+      description: "Interactive C++ coding game platform with progressive challenges, real-time compilation, sandbox system for safe code execution, and Docker-based development environment.",
+      technologies: ["C++", "CMake", "Docker", "PostgreSQL", "Playwright", "Node.js"],
+      category: "fullstack",
+      image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=600&h=400&fit=crop",
       featured: false
     }
   ];
@@ -111,39 +123,6 @@ const Projects: React.FC = () => {
         ease: 'easeOut',
       },
     },
-  };
-
-  const handleAccessRequest = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmissionStatus('loading');
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: accessForm.name,
-          email: accessForm.email,
-          subject: 'Demo Access Request - Inventory Management System',
-          message: `Demo Access Request\n\nName: ${accessForm.name}\nEmail: ${accessForm.email}\nCompany: ${accessForm.company}\n\nMessage:\n${accessForm.message}\n\nRequesting access to the Inventory Management System demo.`
-        }),
-      });
-
-      if (response.ok) {
-        setSubmissionStatus('success');
-        setTimeout(() => {
-          setShowAccessModal(false);
-          setAccessForm({ name: '', email: '', company: '', message: '' });
-          setSubmissionStatus('idle');
-        }, 2000);
-      } else {
-        setSubmissionStatus('error');
-      }
-    } catch (error) {
-      setSubmissionStatus('error');
-    }
   };
 
   return (
@@ -228,177 +207,33 @@ const Projects: React.FC = () => {
                 </div>
                 
                 <div className="flex gap-4">
-                  {project.id === 1 ? (
-                    <>
-                      <button
-                        onClick={() => setShowAccessModal(true)}
-                        className="flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200"
-                      >
-                        <Key size={16} />
-                        Request Access
-                      </button>
-                      {project.githubUrl && (
-                        <a
-                          href={project.githubUrl}
-                          className="flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200"
-                        >
-                          <Github size={16} />
-                          Code
-                        </a>
-                      )}
-                    </>
-                  ) : (
-                    <>
-                      {project.demoUrl && (
-                        <a
-                          href={project.demoUrl}
-                          className="flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200"
-                        >
-                          <ExternalLink size={16} />
-                          Live Demo
-                        </a>
-                      )}
-                      {project.githubUrl && (
-                        <a
-                          href={project.githubUrl}
-                          className="flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200"
-                        >
-                          <Github size={16} />
-                          Code
-                        </a>
-                      )}
-                    </>
+                  {project.demoUrl && (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200"
+                    >
+                      <ExternalLink size={16} />
+                      Live Demo
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200"
+                    >
+                      <Github size={16} />
+                      Code
+                    </a>
                   )}
                 </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
-
-        {/* Demo Access Request Modal */}
-        <AnimatePresence>
-          {showAccessModal && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
-              onClick={() => setShowAccessModal(false)}
-            >
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                className="bg-white rounded-xl shadow-xl p-6 w-full max-w-md"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-xl font-bold text-gray-900">Request Demo Access</h3>
-                  <button
-                    onClick={() => setShowAccessModal(false)}
-                    className="text-gray-400 hover:text-gray-600"
-                  >
-                    <X size={20} />
-                  </button>
-                </div>
-                
-                <p className="text-gray-600 mb-6">
-                  Request access to the Inventory Management System demo. I'll send you the login credentials.
-                </p>
-
-                <form onSubmit={handleAccessRequest} className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={accessForm.name}
-                      onChange={(e) => setAccessForm({ ...accessForm, name: e.target.value })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                      placeholder="Your full name"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={accessForm.email}
-                      onChange={(e) => setAccessForm({ ...accessForm, email: e.target.value })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Company
-                    </label>
-                    <input
-                      type="text"
-                      value={accessForm.company}
-                      onChange={(e) => setAccessForm({ ...accessForm, company: e.target.value })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                      placeholder="Your company name"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Message
-                    </label>
-                    <textarea
-                      rows={3}
-                      value={accessForm.message}
-                      onChange={(e) => setAccessForm({ ...accessForm, message: e.target.value })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                      placeholder="Tell me about your interest in the demo..."
-                    />
-                  </div>
-
-                  {submissionStatus === 'success' && (
-                    <div className="text-green-600 text-sm">
-                      ✓ Request sent! I'll email you the demo credentials shortly.
-                    </div>
-                  )}
-                  
-                  {submissionStatus === 'error' && (
-                    <div className="text-red-600 text-sm">
-                      ✗ Failed to send request. Please try again.
-                    </div>
-                  )}
-
-                  <div className="flex gap-3 pt-2">
-                    <button
-                      type="button"
-                      onClick={() => setShowAccessModal(false)}
-                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      disabled={submissionStatus === 'loading'}
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 transition-colors"
-                    >
-                      {submissionStatus === 'loading' ? (
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
-                      ) : (
-                        <Send size={16} />
-                      )}
-                      {submissionStatus === 'loading' ? 'Sending...' : 'Send Request'}
-                    </button>
-                  </div>
-                </form>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </section>
   );
