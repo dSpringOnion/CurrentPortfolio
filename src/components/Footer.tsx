@@ -5,7 +5,7 @@ import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 const Footer: React.FC = () => {
   const socialLinks = [
     { icon: Github, href: 'https://github.com/dSpringOnion', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/daniel-park-02a74a227/', label: 'LinkedIn' },
     { icon: Mail, href: 'mailto:dbpark.dev@gmail.com', label: 'Email' },
   ];
 
