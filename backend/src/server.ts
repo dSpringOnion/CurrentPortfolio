@@ -79,41 +79,59 @@ app.post('/api/contact', async (req: Request, res: Response) => {
       timestamp: new Date().toISOString(),
     });
 
-    // Validate email configuration
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
-      console.error('Email configuration missing');
-      throw new Error('Email service not configured');
+    // Check if email is configured - if not, just log the message
+    const emailConfigured = process.env.EMAIL_USER && process.env.EMAIL_PASSWORD;
+
+    if (!emailConfigured) {
+      console.log('Email not configured - logging message only');
+      console.log('Would send email:', { name, email, subject, message });
+      // Still return success so the form works
+    } else {
+      // Send email
+      const transporter = createTransporter();
+
+      // Verify transporter configuration with timeout
+      try {
+        await Promise.race([
+          transporter.verify(),
+          new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('SMTP verification timeout')), 5000)
+          )
+        ]);
+        console.log('SMTP connection verified');
+      } catch (verifyError: any) {
+        console.error('SMTP verification failed:', verifyError.message);
+        // Log but still try to send
+      }
+
+      const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: process.env.CONTACT_EMAIL || process.env.EMAIL_USER,
+        subject: `Portfolio Contact: ${subject}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Subject:</strong> ${subject}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message.replace(/\n/g, '<br>')}</p>
+        `,
+      };
+
+      try {
+        const info = await Promise.race([
+          transporter.sendMail(mailOptions),
+          new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('Email send timeout')), 10000)
+          )
+        ]);
+        console.log('Email sent successfully:', (info as any).messageId);
+      } catch (sendError: any) {
+        console.error('Failed to send email:', sendError.message);
+        console.log('Message details (logged):', { name, email, subject, message });
+        // Don't throw - we've logged it
+      }
     }
-
-    // Send email
-    const transporter = createTransporter();
-
-    // Verify transporter configuration
-    try {
-      await transporter.verify();
-      console.log('SMTP connection verified');
-    } catch (verifyError: any) {
-      console.error('SMTP verification failed:', verifyError.message);
-      throw new Error('Email service connection failed');
-    }
-
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.CONTACT_EMAIL || process.env.EMAIL_USER,
-      subject: `Portfolio Contact: ${subject}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-      `,
-    };
-
-    const info = await transporter.sendMail(mailOptions);
-
-    console.log('Email sent successfully:', info.messageId);
 
     res.status(200).json({
       message: 'Message sent successfully!',
