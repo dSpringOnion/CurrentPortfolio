@@ -77,7 +77,7 @@ const Projects: React.FC = () => {
       technologies: ["Python", "FastAPI", "Scikit-learn", "NumPy", "Pandas", "Matplotlib", "React", "TypeScript"],
       category: "ml",
       image: "https://images.unsplash.com/photo-1634128221889-82ed6efebfc3?w=600&h=400&fit=crop",
-      githubUrl: "https://github.com/dSpringOnion/lottopredictorml",
+      githubUrl: "https://github.com/dSpringOnion/lottoml",
       featured: false
     },
     {
