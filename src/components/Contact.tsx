@@ -49,7 +49,7 @@ const Contact: React.FC = () => {
     setStatus({ type: "loading", message: "Sending message..." });
 
     try {
-      const apiUrl = (import.meta as any).env?.VITE_API_URL || "/api/contact";
+      const apiUrl = process.env.REACT_APP_API_URL || "https://sparkling-tenderness-production.up.railway.app/api/contact";
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
