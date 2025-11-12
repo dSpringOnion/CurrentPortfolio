@@ -36,8 +36,9 @@ const createTransporter = () => {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD,
       },
-      connectionTimeout: 10000,
-      greetingTimeout: 10000,
+      connectionTimeout: 5000,
+      greetingTimeout: 5000,
+      socketTimeout: 5000,
     });
   } else {
     // Generic SMTP configuration
@@ -78,9 +79,24 @@ app.post('/api/contact', async (req: Request, res: Response) => {
       timestamp: new Date().toISOString(),
     });
 
+    // Validate email configuration
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
+      console.error('Email configuration missing');
+      throw new Error('Email service not configured');
+    }
+
     // Send email
     const transporter = createTransporter();
-    
+
+    // Verify transporter configuration
+    try {
+      await transporter.verify();
+      console.log('SMTP connection verified');
+    } catch (verifyError: any) {
+      console.error('SMTP verification failed:', verifyError.message);
+      throw new Error('Email service connection failed');
+    }
+
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: process.env.CONTACT_EMAIL || process.env.EMAIL_USER,
