@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 px-4 sm:px-6 lg:px-8"
+      className="min-h-screen flex items-center justify-center bg-white dark:bg-neutral-950 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-7xl mx-auto text-center">
         <motion.div
@@ -50,12 +50,12 @@ const Hero: React.FC = () => {
           className="space-y-8"
         >
           <motion.div variants={itemVariants} className="space-y-4">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white">
-              Hi, I'm <span className="text-primary-600">Daniel Park</span>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-black dark:text-white">
+              Hi, I'm <span className="text-blue-500 dark:text-purple-400">Daniel Park</span>
               <br />
               Freelance Fullstack Developer
             </h1>
-            <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl sm:text-2xl text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed">
               Building enterprise-scale applications and intelligent ML systems.
               Specialized in full-stack development, machine learning, and scalable architectures designed for growth.
             </p>
@@ -75,10 +75,10 @@ const Hero: React.FC = () => {
                 variants={iconVariants}
                 className="flex flex-col items-center space-y-2"
               >
-                <div className={`p-4 rounded-full bg-gray-100 ${item.color}`}>
+                <div className={`p-4 rounded-full bg-neutral-100 dark:bg-neutral-800 ${item.color}`}>
                   <item.icon size={32} />
                 </div>
-                <span className="text-gray-700 font-medium">{item.label}</span>
+                <span className="text-neutral-700 dark:text-neutral-300 font-medium">{item.label}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -89,7 +89,7 @@ const Hero: React.FC = () => {
                 href="#projects"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-8 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center px-8 py-3 bg-blue-500 dark:bg-purple-500 text-white font-medium rounded-lg hover:bg-blue-600 dark:hover:bg-purple-600 transition-colors duration-200 shadow-lg hover:shadow-xl"
               >
                 View My Work
               </motion.a>
@@ -97,7 +97,7 @@ const Hero: React.FC = () => {
                 href="#contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-8 py-3 border-2 border-primary-600 text-primary-600 font-medium rounded-lg hover:bg-primary-600 hover:text-white transition-all duration-200"
+                className="inline-flex items-center px-8 py-3 border-2 border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 font-medium rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200"
               >
                 Get In Touch
               </motion.a>
@@ -110,7 +110,7 @@ const Hero: React.FC = () => {
             >
               <a
                 href="#projects"
-                className="text-gray-400 hover:text-primary-600 transition-colors duration-200"
+                className="text-neutral-400 dark:text-neutral-600 hover:text-blue-500 dark:hover:text-purple-400 transition-colors duration-200"
               >
                 <ArrowDown size={24} />
               </a>

@@ -98,7 +98,7 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-20 bg-neutral-50 dark:bg-neutral-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -107,10 +107,10 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-lg md:text-4xl font-bold text-black dark:text-white mb-4">
             Get In Touch
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-3xl mx-auto">
             Have a project in mind or want to collaborate? I'd love to hear from
             you.
           </p>
@@ -125,10 +125,10 @@ const Contact: React.FC = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              <h3 className="text-2xl font-bold text-black dark:text-white mb-6">
                 Let's start a conversation
               </h3>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <p className="text-neutral-700 dark:text-neutral-300 text-lg leading-relaxed">
                 I'm always interested in new opportunities, challenging
                 projects, and meeting fellow developers. Whether you have a
                 project in mind or just want to connect, feel free to reach out.
@@ -144,16 +144,16 @@ const Contact: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 group"
+                  className="flex items-center gap-4 p-4 bg-white dark:bg-neutral-800 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 group border border-neutral-200 dark:border-neutral-700"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center group-hover:bg-primary-200 transition-colors duration-200">
-                    <info.icon size={20} className="text-primary-600" />
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-100 dark:bg-blue-950/30 rounded-lg flex items-center justify-center group-hover:bg-blue-200 dark:group-hover:bg-blue-900/50 transition-colors duration-200">
+                    <info.icon size={20} className="text-blue-600 dark:text-blue-400" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-500">
+                    <p className="text-sm font-medium text-neutral-500 dark:text-neutral-400">
                       {info.label}
                     </p>
-                    <p className="text-gray-900 font-medium">{info.value}</p>
+                    <p className="text-black dark:text-white font-medium">{info.value}</p>
                   </div>
                 </motion.a>
               ))}
@@ -165,14 +165,14 @@ const Contact: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-xl shadow-lg p-8"
+            className="bg-white dark:bg-neutral-800 rounded-xl shadow-lg p-8 border border-neutral-200 dark:border-neutral-700"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2"
                   >
                     Name
                   </label>
@@ -183,14 +183,14 @@ const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-900 text-black dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2"
                   >
                     Email
                   </label>
@@ -201,7 +201,7 @@ const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-900 text-black dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -210,7 +210,7 @@ const Contact: React.FC = () => {
               <div>
                 <label
                   htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2"
                 >
                   Subject
                 </label>
@@ -221,7 +221,7 @@ const Contact: React.FC = () => {
                   value={formData.subject}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-900 text-black dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                   placeholder="What's this about?"
                 />
               </div>
@@ -229,7 +229,7 @@ const Contact: React.FC = () => {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2"
                 >
                   Message
                 </label>
@@ -240,7 +240,7 @@ const Contact: React.FC = () => {
                   onChange={handleInputChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-900 text-black dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                   placeholder="Tell me about your project or just say hello!"
                 />
               </div>
@@ -268,7 +268,7 @@ const Contact: React.FC = () => {
                 disabled={status.type === "loading"}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full flex items-center justify-center gap-2 px-8 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center gap-2 px-8 py-3 bg-blue-500 dark:bg-purple-500 text-white font-medium rounded-lg hover:bg-blue-600 dark:hover:bg-purple-600 focus:ring-2 focus:ring-blue-500 dark:focus:ring-purple-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {status.type === "loading" ? (
                   <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />

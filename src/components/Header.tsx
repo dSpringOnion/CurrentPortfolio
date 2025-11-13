@@ -33,7 +33,7 @@ const Header: React.FC = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        isScrolled ? 'bg-white/90 dark:bg-neutral-950/90 backdrop-blur-md shadow-lg border-b border-neutral-200 dark:border-neutral-800' : 'bg-transparent'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,7 +44,7 @@ const Header: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="flex-shrink-0"
           >
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-2xl font-bold text-black dark:text-white">
               Portfolio
             </h1>
           </motion.div>
@@ -58,7 +58,7 @@ const Header: React.FC = () => {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index }}
-                  className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                  className="text-neutral-700 dark:text-neutral-300 hover:text-blue-500 dark:hover:text-purple-400 px-3 py-2 text-sm font-medium transition-colors duration-200"
                 >
                   {item.name}
                 </motion.a>
@@ -74,7 +74,7 @@ const Header: React.FC = () => {
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3 + 0.1 * index }}
-                className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                className="text-neutral-600 dark:text-neutral-400 hover:text-blue-500 dark:hover:text-purple-400 transition-colors duration-200"
                 aria-label={social.label}
               >
                 <social.icon size={20} />
@@ -86,7 +86,7 @@ const Header: React.FC = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+              className="text-neutral-700 dark:text-neutral-300 hover:text-blue-500 dark:hover:text-purple-400 transition-colors duration-200"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -98,31 +98,31 @@ const Header: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white/95 dark:bg-gray-800/95 backdrop-blur-md rounded-lg mt-2 p-4 shadow-lg"
+            className="md:hidden bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md rounded-lg mt-2 p-4 shadow-lg border border-neutral-200 dark:border-neutral-800"
           >
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 text-base font-medium transition-colors duration-200"
+                  className="text-neutral-700 dark:text-neutral-300 hover:text-blue-500 dark:hover:text-purple-400 block px-3 py-2 text-base font-medium transition-colors duration-200"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
-              <div className="flex justify-center space-x-6 pt-4 border-t border-gray-200 dark:border-gray-600">
+              <div className="flex justify-center space-x-6 pt-4 border-t border-neutral-200 dark:border-neutral-700">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
-                    className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                    className="text-neutral-600 dark:text-neutral-400 hover:text-blue-500 dark:hover:text-purple-400 transition-colors duration-200"
                     aria-label={social.label}
                   >
                     <social.icon size={20} />
                   </a>
                 ))}
-                <div className="pl-4 border-l border-gray-200 dark:border-gray-600">
+                <div className="pl-4 border-l border-neutral-200 dark:border-neutral-700">
                   <ThemeToggle />
                 </div>
               </div>

@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className="bg-neutral-900 dark:bg-neutral-950 text-white py-12 border-t border-neutral-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
         >
           <div>
             <h3 className="text-2xl font-bold mb-4">Let's Build Something Amazing Together</h3>
-            <p className="text-gray-400 max-w-md mx-auto">
+            <p className="text-neutral-400 max-w-md mx-auto">
               Ready to bring your ideas to life? Let's connect and create something extraordinary.
             </p>
           </div>
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.4 }}
                 whileHover={{ scale: 1.1 }}
-                className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-600 transition-colors duration-200"
+                className="w-12 h-12 bg-neutral-800 dark:bg-neutral-900 rounded-full flex items-center justify-center hover:bg-blue-500 dark:hover:bg-purple-500 transition-colors duration-200"
                 aria-label={social.label}
               >
                 <social.icon size={20} />
@@ -46,8 +46,8 @@ const Footer: React.FC = () => {
             ))}
           </div>
 
-          <div className="border-t border-gray-800 pt-8">
-            <p className="text-gray-400 flex items-center justify-center gap-2">
+          <div className="border-t border-neutral-800 dark:border-neutral-900 pt-8">
+            <p className="text-neutral-400 flex items-center justify-center gap-2">
               © {currentYear} Portfolio. Made with <Heart size={16} className="text-red-500" /> and lots of coffee.
             </p>
           </div>
