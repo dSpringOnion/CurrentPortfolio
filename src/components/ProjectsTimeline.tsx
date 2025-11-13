@@ -5,7 +5,7 @@ import { ExternalLink, Github } from "lucide-react";
 export function ProjectsTimeline() {
   const data = [
     {
-      title: "Current",
+      title: "2025 - Current",
       content: (
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
@@ -61,7 +61,7 @@ export function ProjectsTimeline() {
       ),
     },
     {
-      title: "Late 2024",
+      title: "2024 - November",
       content: (
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
@@ -117,7 +117,7 @@ export function ProjectsTimeline() {
       ),
     },
     {
-      title: "Mid 2024",
+      title: "2024 - October",
       content: (
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
@@ -201,7 +201,7 @@ export function ProjectsTimeline() {
       ),
     },
     {
-      title: "Early 2024",
+      title: "2024 - September",
       content: (
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
@@ -257,7 +257,7 @@ export function ProjectsTimeline() {
       ),
     },
     {
-      title: "Tail End 2024",
+      title: "2024 - Nov/Dec",
       content: (
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
