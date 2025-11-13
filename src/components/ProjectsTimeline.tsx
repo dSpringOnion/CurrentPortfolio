@@ -61,7 +61,7 @@ export function ProjectsTimeline() {
       ),
     },
     {
-      title: "2025 - January",
+      title: "2025 - Sept/Oct",
       content: (
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
@@ -117,7 +117,7 @@ export function ProjectsTimeline() {
       ),
     },
     {
-      title: "2024 - December",
+      title: "2025 - March/May",
       content: (
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
@@ -201,7 +201,7 @@ export function ProjectsTimeline() {
       ),
     },
     {
-      title: "2024 - November",
+      title: "2025 - January",
       content: (
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
