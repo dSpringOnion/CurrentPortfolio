@@ -2,21 +2,19 @@ import React from 'react';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Projects from './components/Projects';
+import { ProjectsTimeline } from './components/ProjectsTimeline';
 import Skills from './components/Skills';
-import { Journey } from './components/Journey';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
   return (
     <ThemeProvider>
-      <div className="App bg-white dark:bg-gray-900 transition-colors duration-300">
+      <div className="App bg-white dark:bg-neutral-950 transition-colors duration-300">
         <Header />
         <main>
           <Hero />
-          <Projects />
-          <Journey />
+          <ProjectsTimeline />
           <Skills />
           <Contact />
         </main>
