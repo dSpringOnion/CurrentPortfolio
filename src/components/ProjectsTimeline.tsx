@@ -117,6 +117,62 @@ export function ProjectsTimeline() {
       ),
     },
     {
+      title: "2025 - June",
+      content: (
+        <div>
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
+            Multi-tenant financial management platform with comprehensive expense tracking and analytics.
+          </p>
+
+          <div className="space-y-6 mb-8">
+            {/* Expense Tracker */}
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-xl p-6 border border-neutral-200 dark:border-neutral-800">
+              <div className="flex items-start justify-between mb-3">
+                <h3 className="text-lg md:text-xl font-bold text-neutral-900 dark:text-neutral-100">
+                  Expense Tracker
+                </h3>
+                <span className="px-3 py-1 bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 text-xs font-medium rounded-full">
+                  Full Stack
+                </span>
+              </div>
+              <p className="text-sm md:text-base text-neutral-700 dark:text-neutral-300 mb-4">
+                Full-stack multi-tenant expense tracking application with organization-based user management, JWT authentication, real-time analytics, and comprehensive budget management. Features recurring expenses automation and role-based access control.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma', 'NextAuth.js', 'Tailwind CSS', 'Radix UI'].map((tech) => (
+                  <span key={tech} className="px-2 py-1 bg-white/50 dark:bg-black/20 text-neutral-700 dark:text-neutral-300 text-xs rounded-md border border-neutral-200 dark:border-neutral-700">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <a
+                href="https://github.com/dSpringOnion/expensetracker"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 hover:underline font-medium"
+              >
+                <Github size={16} />
+                View Code
+              </a>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <img
+              src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&q=80"
+              alt="Financial tracking"
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80"
+              alt="Business analytics"
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+          </div>
+        </div>
+      ),
+    },
+    {
       title: "2025 - March/May",
       content: (
         <div>

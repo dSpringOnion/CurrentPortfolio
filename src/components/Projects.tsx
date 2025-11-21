@@ -89,6 +89,16 @@ const Projects: React.FC = () => {
       image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=600&h=400&fit=crop",
       githubUrl: "https://github.com/dSpringOnion/codequest",
       featured: false
+    },
+    {
+      id: 8,
+      title: "Expense Tracker",
+      description: "Full-stack multi-tenant expense tracking application with organization-based user management, JWT authentication, real-time analytics, and comprehensive budget management. Features recurring expenses automation and role-based access control.",
+      technologies: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "NextAuth.js", "Tailwind CSS", "Radix UI"],
+      category: "fullstack",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
+      githubUrl: "https://github.com/dSpringOnion/expensetracker",
+      featured: true
     }
   ];
 
