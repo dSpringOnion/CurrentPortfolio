@@ -94,7 +94,7 @@ export function Journey() {
                 Production-ready platform with drag-and-drop visual editor, 50+ components, Stripe payments, and comprehensive admin dashboard.
               </p>
               <a
-                href="https://github.com/dSpringOnion/ecommerceboilerplate"
+                href="https://github.com/dSpringOnion/DannyperfumeDemo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1 text-xs text-neutral-600 dark:text-neutral-400 hover:underline"

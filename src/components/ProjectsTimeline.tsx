@@ -90,7 +90,7 @@ export function ProjectsTimeline() {
                 ))}
               </div>
               <a
-                href="https://github.com/dSpringOnion/ecommerceboilerplate"
+                href="https://github.com/dSpringOnion/DannyperfumeDemo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 hover:underline font-medium"

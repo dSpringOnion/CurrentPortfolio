@@ -47,7 +47,7 @@ const Projects: React.FC = () => {
       technologies: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Stripe", "shadcn/ui", "Puck"],
       category: "fullstack",
       image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600&h=400&fit=crop",
-      githubUrl: "https://github.com/dSpringOnion/ecommerceboilerplate",
+      githubUrl: "https://github.com/dSpringOnion/DannyperfumeDemo",
       featured: true
     },
     {
