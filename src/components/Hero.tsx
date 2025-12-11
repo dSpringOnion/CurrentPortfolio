@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
             </h1>
             <p className="text-xl sm:text-2xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed font-light">
               Hi, I'm <span className="font-semibold text-neutral-900 dark:text-white">Daniel Park</span>.
-              I build high-performance applications with a focus on premium aesthetics and scalable architecture.
+              I build high-performance applications with a focus on scalable architecture and practical solutions.
             </p>
           </div>
 
