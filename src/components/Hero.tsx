@@ -1,123 +1,103 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Code, Database, Server } from "lucide-react";
+import { ArrowDown, Code, Database, Server, ExternalLink } from "lucide-react";
+import { Spotlight } from "./ui/Spotlight";
 
 const Hero: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const iconVariants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
-
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-center bg-white dark:bg-neutral-950 px-4 sm:px-6 lg:px-8"
+      className="relative min-h-screen py-20 flex items-center justify-center bg-white dark:bg-neutral-950 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto text-center">
+      <Spotlight
+        className="-top-40 left-0 md:left-60 md:-top-20"
+        fill="white"
+      />
+
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-grid-black/[0.2] dark:bg-grid-white/[0.02] bg-[length:32px_32px]" />
+        <div className="absolute inset-0 bg-white/50 dark:bg-neutral-950/80 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
           className="space-y-8"
         >
-          <motion.div variants={itemVariants} className="space-y-4">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-black dark:text-white">
-              Hi, I'm <span className="text-blue-500 dark:text-purple-400">Daniel Park</span>
-              <br />
-              Freelance Fullstack Developer
-            </h1>
-            <p className="text-xl sm:text-2xl text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-              Building enterprise-scale applications and intelligent ML systems.
-              Specialized in full-stack development, machine learning, and scalable architectures designed for growth.
-            </p>
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 backdrop-blur-sm"
+          >
+            <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse" />
+            <span className="text-sm text-neutral-600 dark:text-neutral-400 font-medium">Available for new projects</span>
           </motion.div>
 
+          {/* Main Heading */}
+          <div className="space-y-4">
+            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-neutral-900 dark:text-white">
+              Designing the <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 animate-gradient">
+                Future of Web
+              </span>
+            </h1>
+            <p className="text-xl sm:text-2xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed font-light">
+              Hi, I'm <span className="font-semibold text-neutral-900 dark:text-white">Daniel Park</span>.
+              I build high-performance applications with a focus on premium aesthetics and scalable architecture.
+            </p>
+          </div>
+
+          {/* Tech Stack Pills */}
           <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap justify-center gap-8 py-8"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="flex flex-wrap justify-center gap-3 py-6"
           >
             {[
-              { icon: Code, label: "Frontend", color: "text-blue-600" },
-              { icon: Server, label: "Backend", color: "text-green-600" },
-              { icon: Database, label: "Database", color: "text-purple-600" },
-            ].map((item, index) => (
-              <motion.div
-                key={item.label}
-                variants={iconVariants}
-                className="flex flex-col items-center space-y-2"
-              >
-                <div className={`p-4 rounded-full bg-neutral-100 dark:bg-neutral-800 ${item.color}`}>
-                  <item.icon size={32} />
-                </div>
-                <span className="text-neutral-700 dark:text-neutral-300 font-medium">{item.label}</span>
-              </motion.div>
+              { icon: Code, label: "Frontend Architecture" },
+              { icon: Server, label: "Backend Systems" },
+              { icon: Database, label: "AI Integration" },
+            ].map((tech) => (
+              <div key={tech.label} className="flex items-center space-x-2 px-4 py-2 rounded-full bg-neutral-100 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 transition-colors hover:border-blue-500/50">
+                <tech.icon size={16} />
+                <span className="text-sm font-medium">{tech.label}</span>
+              </div>
             ))}
           </motion.div>
 
-          <motion.div variants={itemVariants} className="space-y-6">
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a
-                href="#projects"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-8 py-3 bg-blue-500 dark:bg-purple-500 text-white font-medium rounded-lg hover:bg-blue-600 dark:hover:bg-purple-600 transition-colors duration-200 shadow-lg hover:shadow-xl"
-              >
-                View My Work
-              </motion.a>
-              <motion.a
-                href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-8 py-3 border-2 border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 font-medium rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200"
-              >
-                Get In Touch
-              </motion.a>
-            </div>
-
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="flex justify-center pt-8"
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <a
+              href="#projects"
+              className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-neutral-950 dark:bg-white px-8 font-medium text-white dark:text-neutral-950 transition-all duration-300 hover:bg-neutral-800 dark:hover:bg-neutral-200 hover:scale-105"
             >
-              <a
-                href="#projects"
-                className="text-neutral-400 dark:text-neutral-600 hover:text-blue-500 dark:hover:text-purple-400 transition-colors duration-200"
-              >
-                <ArrowDown size={24} />
-              </a>
-            </motion.div>
+              <span className="mr-2">View Work</span>
+              <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-1" />
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex h-12 items-center justify-center rounded-md border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 px-8 font-medium text-neutral-900 dark:text-white transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:scale-105 group"
+            >
+              <span className="mr-2">Contact Me</span>
+              <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </a>
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Decorative Bottom Gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-neutral-950 to-transparent pointer-events-none" />
     </section>
   );
 };

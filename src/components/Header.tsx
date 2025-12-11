@@ -32,9 +32,8 @@ const Header: React.FC = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/90 dark:bg-neutral-950/90 backdrop-blur-md shadow-lg border-b border-neutral-200 dark:border-neutral-800' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-neutral-950/90 backdrop-blur-md shadow-lg border-b border-neutral-200 dark:border-neutral-800' : 'bg-transparent'
+        }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -44,9 +43,14 @@ const Header: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="flex-shrink-0"
           >
-            <h1 className="text-2xl font-bold text-black dark:text-white">
-              Portfolio
-            </h1>
+            <div className="flex items-center gap-2 group">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-bold text-xl shadow-lg shadow-blue-500/20 transition-transform group-hover:scale-105">
+                DP
+              </div>
+              <span className="font-semibold text-neutral-900 dark:text-white hidden sm:block opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                Daniel Park
+              </span>
+            </div>
           </motion.div>
 
           <div className="hidden md:block">
