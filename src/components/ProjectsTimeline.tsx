@@ -1,6 +1,7 @@
 import React from "react";
 import { Timeline } from "./ui/timeline";
-import { ExternalLink, Github, Layers, Zap, Database, Globe, Cpu } from "lucide-react";
+import { ExternalLink, Github, Layers, Zap, Database, Globe, Cpu, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function ProjectsTimeline() {
   const data = [
@@ -44,6 +45,13 @@ export function ProjectsTimeline() {
                 </div>
 
                 <div className="flex items-center gap-4 pt-4 border-t border-neutral-100 dark:border-neutral-800">
+                  <Link
+                    href="/case-studies/distcachelayer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full text-sm font-medium transition-transform hover:scale-105"
+                  >
+                    <span>Read Case Study</span>
+                    <ArrowRight size={16} />
+                  </Link>
                   <a
                     href="https://github.com/dSpringOnion/clidistcachelayer"
                     target="_blank"
@@ -94,15 +102,24 @@ export function ProjectsTimeline() {
                   ))}
                 </div>
 
-                <a
-                  href="https://github.com/dSpringOnion/DannyperfumeDemo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-purple-600 dark:hover:text-purple-400 font-medium transition-colors"
-                >
-                  <Github size={16} />
-                  <span>View Repository</span>
-                </a>
+                <div className="flex gap-4 pt-4 border-t border-neutral-100 dark:border-neutral-800">
+                  <Link
+                      href="/case-studies/ecommerce-saas-boilerplate"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full text-sm font-medium transition-transform hover:scale-105"
+                    >
+                      <span>Read Case Study</span>
+                      <ArrowRight size={16} />
+                  </Link>
+                  <a
+                    href="https://github.com/dSpringOnion/DannyperfumeDemo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-purple-600 dark:hover:text-purple-400 font-medium transition-colors"
+                  >
+                    <Github size={16} />
+                    <span>View Repository</span>
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -130,16 +147,25 @@ export function ProjectsTimeline() {
                     </span>
                   ))}
                 </div>
-
-                <a
-                  href="https://github.com/dSpringOnion/expensetracker"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-green-600 dark:hover:text-green-400 font-medium transition-colors"
-                >
-                  <Github size={16} />
-                  <span>View Repository</span>
-                </a>
+                
+                <div className="flex gap-4 pt-4 border-t border-neutral-100 dark:border-neutral-800">
+                  <Link
+                      href="/case-studies/expense-tracker"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full text-sm font-medium transition-transform hover:scale-105"
+                    >
+                      <span>Read Case Study</span>
+                      <ArrowRight size={16} />
+                  </Link>
+                  <a
+                    href="https://github.com/dSpringOnion/expensetracker"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-green-600 dark:hover:text-green-400 font-medium transition-colors"
+                  >
+                    <Github size={16} />
+                    <span>View Repository</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -180,7 +206,14 @@ export function ProjectsTimeline() {
                   ))}
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex gap-4 pt-4 border-t border-neutral-100 dark:border-neutral-800">
+                  <Link
+                      href="/case-studies/vision-based-vehicle-behavior-detector"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full text-sm font-medium transition-transform hover:scale-105"
+                    >
+                      <span>Read Case Study</span>
+                      <ArrowRight size={16} />
+                  </Link>
                   <a
                     href="https://serene-dedication-production-63d2.up.railway.app/"
                     target="_blank"
@@ -228,7 +261,14 @@ export function ProjectsTimeline() {
                   ))}
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex gap-4 pt-4 border-t border-neutral-100 dark:border-neutral-800">
+                  <Link
+                      href="/case-studies/heart-disease-risk-predictor"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full text-sm font-medium transition-transform hover:scale-105"
+                    >
+                      <span>Read Case Study</span>
+                      <ArrowRight size={16} />
+                  </Link>
                   <a
                     href="https://heartdiseasepredictor-production.up.railway.app/"
                     target="_blank"

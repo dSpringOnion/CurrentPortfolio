@@ -1,3 +1,5 @@
+"use client";
+
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
@@ -22,20 +24,20 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(() => {
-    // Check if theme is stored in localStorage
+  const [theme, setTheme] = useState<Theme>('light');
+
+  // Load theme from localStorage on mount (client-side only)
+  useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme;
     if (savedTheme) {
-      return savedTheme;
+      setTheme(savedTheme);
+      return;
     }
     
-    // Check system preference
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
+      setTheme('dark');
     }
-    
-    return 'light';
-  });
+  }, []);
 
   useEffect(() => {
     const root = window.document.documentElement;
