@@ -60,7 +60,11 @@ export const projects: Project[] = [
     featured: true,
     deepDiveContent: {
       problemStatement: "Heart disease remains a leading cause of death globally. Early detection is critical, yet traditional diagnostic methods can be invasive and expensive. This project aimed to democratize access to preliminary risk assessment using machine learning on standard health metrics.",
-      architectureDiagramUrl: "/placeholder-architecture.png",
+      architectureDiagramUrl: "/images/case-studies/heart-disease-1.png",
+      demoImages: [
+        "/images/case-studies/heart-disease-2.png",
+        "/images/case-studies/heart-disease-3.png"
+      ],
       challengesOvercome: [
         "Handling imbalanced datasets where positive cases were underrepresented.",
         "Optimizing model inference time for a seamless user experience.",
