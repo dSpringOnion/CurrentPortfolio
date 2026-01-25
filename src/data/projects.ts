@@ -34,7 +34,11 @@ export const projects: Project[] = [
     featured: true,
     deepDiveContent: {
       problemStatement: "Current driver monitoring systems are expensive and require specialized hardware. This project aimed to build a cost-effective, real-time solution using standard webcams and browser capabilities.",
-      architectureDiagramUrl: "/placeholder-architecture.png",
+      architectureDiagramUrl: "/images/case-studies/vehicle-behavior-1.png",
+      demoImages: [
+        "/images/case-studies/vehicle-behavior-2.png",
+        "/images/case-studies/vehicle-behavior-3.png"
+      ],
       challengesOvercome: [
         "Achieving real-time inference in the browser with YOLOv8.",
         "Balancing model accuracy with latency requirements.",
