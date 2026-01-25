@@ -1,12 +1,13 @@
 "use client";
 
-import React from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Github, ExternalLink, Image as ImageIcon } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Image as ImageIcon, X, ZoomIn } from 'lucide-react';
 import { Project, projects } from '@/data/projects';
 import { ProjectNavigator } from '@/components/ProjectNavigator';
 import { Spotlight } from '@/components/ui/Spotlight';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface CaseStudyLayoutProps {
   project: Project;
@@ -14,20 +15,21 @@ interface CaseStudyLayoutProps {
 
 export const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({ project }) => {
   const { deepDiveContent } = project;
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   if (!deepDiveContent) {
     return null; // Should not happen given existing guards, but safe fallback
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-neutral-950 pt-24 pb-12 transition-colors duration-300 relative overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-neutral-950 pt-24 pb-12 transition-colors duration-300 relative">
       
       {/* Spotlight & Grid Background */}
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
         fill="white"
       />
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute inset-0 bg-grid-black/[0.2] dark:bg-grid-white/[0.02] bg-[length:32px_32px]" />
         <div className="absolute inset-0 bg-white/50 dark:bg-neutral-950/80 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       </div>
@@ -113,14 +115,22 @@ export const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({ project }) => 
             
             {/* Primary Architecture Diagram */}
             <div className="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-1 mb-6 border border-neutral-200 dark:border-neutral-800">
-               <div className="aspect-video bg-neutral-200 dark:bg-neutral-800 rounded-lg relative overflow-hidden flex flex-col items-center justify-center text-gray-500 gap-2">
+               <div 
+                 className={`aspect-video bg-neutral-200 dark:bg-neutral-800 rounded-lg relative overflow-hidden flex flex-col items-center justify-center text-gray-500 gap-2 ${deepDiveContent.architectureDiagramUrl && !deepDiveContent.architectureDiagramUrl.includes('placeholder') ? 'cursor-zoom-in group' : ''}`}
+                 onClick={() => deepDiveContent.architectureDiagramUrl && !deepDiveContent.architectureDiagramUrl.includes('placeholder') && setSelectedImage(deepDiveContent.architectureDiagramUrl)}
+               >
                   {deepDiveContent.architectureDiagramUrl && !deepDiveContent.architectureDiagramUrl.includes('placeholder') ? (
-                    <Image 
-                      src={deepDiveContent.architectureDiagramUrl} 
-                      alt="System Architecture" 
-                      fill 
-                      className="object-cover"
-                    />
+                    <>
+                      <Image 
+                        src={deepDiveContent.architectureDiagramUrl} 
+                        alt="System Architecture" 
+                        fill 
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <ZoomIn className="text-white drop-shadow-md" size={32} />
+                      </div>
+                    </>
                   ) : (
                     <>
                       <ImageIcon size={48} className="opacity-20" />
@@ -135,13 +145,19 @@ export const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({ project }) => 
                 {deepDiveContent.demoImages && deepDiveContent.demoImages.length > 0 ? (
                   deepDiveContent.demoImages.map((img, idx) => (
                     <div key={idx} className="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-1 border border-neutral-200 dark:border-neutral-800">
-                        <div className="aspect-[4/3] bg-neutral-200 dark:bg-neutral-800 rounded-lg relative overflow-hidden flex flex-col items-center justify-center text-gray-500 gap-2">
+                        <div 
+                          className="aspect-[4/3] bg-neutral-200 dark:bg-neutral-800 rounded-lg relative overflow-hidden flex flex-col items-center justify-center text-gray-500 gap-2 cursor-zoom-in group"
+                          onClick={() => setSelectedImage(img)}
+                        >
                             <Image 
                               src={img} 
                               alt={`Project Screenshot ${idx + 1}`} 
                               fill 
-                              className="object-cover"
+                              className="object-cover transition-transform duration-300 group-hover:scale-105"
                             />
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                              <ZoomIn className="text-white drop-shadow-md" size={32} />
+                            </div>
                         </div>
                     </div>
                   ))
@@ -195,6 +211,43 @@ export const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({ project }) => 
         <ProjectNavigator currentProject={project} allProjects={projects} />
         
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-7xl w-full max-h-[90vh] flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking image wrapper
+            >
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute -top-12 right-0 text-white/70 hover:text-white transition-colors"
+              >
+                <X size={32} />
+              </button>
+              <div className="relative w-full h-auto aspect-video max-h-[85vh]">
+                 <Image
+                    src={selectedImage}
+                    alt="Full screen preview"
+                    fill
+                    className="object-contain"
+                    quality={100}
+                 />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
