@@ -53,25 +53,53 @@ export const projects: Project[] = [
     id: 9,
     slug: "bounce-arena",
     title: "Bounce Arena",
-    description: "A physics-based multiplayer arcade game built with a custom game engine. Features real-time collision detection, particle systems, and competitive leaderboard integration.",
-    technologies: ["C++", "SFML", "Box2D", "Socket.io"],
+    description: "A mobile auto-battler ball game built with JavaScript and Capacitor for cross-platform deployment. Features physics-based combat, weapon systems, and native iOS/Android builds via Vite's build pipeline.",
+    technologies: ["JavaScript", "Capacitor", "Vite", "CSS", "Swift", "Java"],
     category: "game",
     image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=400&fit=crop", 
     githubUrl: "https://github.com/dSpringOnion/bounceArena",
     featured: true,
-    date: "Current"
+    date: "Current",
+    deepDiveContent: {
+      problemStatement: "Building a cross-platform mobile game without a heavyweight engine like Unity or Unreal. The goal was to create an engaging auto-battler experience using web technologies and Capacitor to bridge to native iOS and Android platforms.",
+      architectureDiagramUrl: "/placeholder-architecture.png",
+      challengesOvercome: [
+        "Implementing smooth physics-based ball combat with vanilla JavaScript.",
+        "Bridging web gameplay to native mobile via Capacitor for iOS and Android.",
+        "Designing a weapon and asset pipeline with custom processing scripts."
+      ],
+      outcomeMetrics: [
+        "Cross-platform iOS & Android",
+        "Lightweight web-native engine",
+        "In active development"
+      ]
+    }
   },
   {
     id: 10,
     slug: "did-you-turn-off-your-stove",
     title: "Did You Turn Off Your Stove?",
-    description: "A mobile-first utility app for users with OCD or anxiety to track daily safety checks. Features customizable checklists, geolocation reminders, and streak tracking.",
-    technologies: ["React Native", "Expo", "TypeScript", "Redux"],
+    description: "A cross-platform mobile app helping users with OCD or anxiety verify daily safety checks. Features stove status tracking, timestamped photo verification, multi-appliance support, and Supabase-powered authentication.",
+    technologies: ["React Native", "Expo", "TypeScript", "Supabase", "Expo Router"],
     category: "mobile",
     image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=600&h=400&fit=crop",
     githubUrl: "https://github.com/dSpringOnion/didyouturnoffyourstove-",
     featured: true,
-    date: "Current"
+    date: "Current",
+    deepDiveContent: {
+      problemStatement: "People with OCD or general anxiety often experience intrusive doubts about whether they turned off appliances before leaving home. Existing reminder apps don't address this specific need — there's no way to capture visual proof and associate it with a specific appliance check.",
+      architectureDiagramUrl: "/placeholder-architecture.png",
+      challengesOvercome: [
+        "Designing a camera-based verification flow that stores timestamped photos linked to specific appliances.",
+        "Implementing Supabase Auth with Expo Router for seamless cross-platform authentication.",
+        "Architecting multi-appliance support with a PostgreSQL schema that scales per-user."
+      ],
+      outcomeMetrics: [
+        "Cross-platform iOS & Android",
+        "Supabase-powered backend",
+        "In active development"
+      ]
+    }
   },
 
   // Dec 2025
@@ -79,13 +107,27 @@ export const projects: Project[] = [
     id: 11,
     slug: "dsa-advent-calendar",
     title: "DSA Advent Calendar",
-    description: "An interactive coding challenge platform featuring 25 days of Data Structures and Algorithms problems. Includes a built-in code editor, test runner, and progress visualization.",
-    technologies: ["Next.js", "Monaco Editor", "Docker", "PostgreSQL"],
+    description: "A 25-day FAANG interview prep platform with interactive algorithm visualizations, Python solutions, and step-by-step tutorials. Covers arrays to advanced DP, built with Next.js 14 and Framer Motion animations, containerized with Docker.",
+    technologies: ["Next.js 14", "TypeScript", "Framer Motion", "Tailwind CSS", "Docker", "Python"],
     category: "fullstack",
     image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=600&h=400&fit=crop",
     githubUrl: "https://github.com/dSpringOnion/dsaadvent",
     featured: true,
-    date: "Dec 2025"
+    date: "Dec 2025",
+    deepDiveContent: {
+      problemStatement: "LeetCode-style platforms are great for practice but lack guided progression and visual explanations. This project creates an advent calendar-style learning path from fundamentals (arrays, strings) through advanced topics (DP, backtracking, Union-Find) with interactive visualizations for each algorithm.",
+      architectureDiagramUrl: "/placeholder-architecture.png",
+      challengesOvercome: [
+        "Building interactive algorithm visualizations with Framer Motion for data structures like trees, graphs, and arrays.",
+        "Importing Python solution files as static assets via webpack raw-loader for syntax-highlighted display.",
+        "Structuring 25 interconnected projects with shared components while keeping each day self-contained."
+      ],
+      outcomeMetrics: [
+        "25 DSA topics covered",
+        "Interactive visualizations per day",
+        "Dockerized local deployment"
+      ]
+    }
   },
 
   // Late Summer 2025
@@ -205,7 +247,6 @@ export const projects: Project[] = [
     technologies: ["Python", "Flask", "YOLOv8", "OpenCV", "React", "TypeScript", "Scikit-learn", "Tailwind CSS"],
     category: "ml",
     image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop",
-    demoUrl: "https://serene-dedication-production-63d2.up.railway.app/",
     githubUrl: "https://github.com/dSpringOnion/MLCBA",
     featured: true,
     date: "Early 2025",
@@ -250,7 +291,7 @@ export const projects: Project[] = [
       challengesOvercome: [
         "Handling imbalanced datasets where positive cases were underrepresented.",
         "Optimizing model inference time for a seamless user experience.",
-        " deploying the python ML model to a serverless environment."
+        "Deploying the Python ML model to a containerized Railway environment."
       ],
       outcomeMetrics: [
         "89.5% Test Accuracy",
