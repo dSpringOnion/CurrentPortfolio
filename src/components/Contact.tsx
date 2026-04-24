@@ -22,22 +22,17 @@ const Contact: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("loading");
 
     try {
+      const formPayload = new FormData(e.currentTarget);
+      formPayload.append("access_key", "0adbcd00-a739-41ff-8c94-3ad4423db698");
+
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          // TODO: Replace this with your actual Web3Forms Access Key
-          access_key: "0adbcd00-a739-41ff-8c94-3ad4423db698",
-          ...formData
-        }),
+        body: formPayload
       });
 
       const result = await response.json();
@@ -45,6 +40,8 @@ const Contact: React.FC = () => {
         setStatus("success");
         setFormData({ name: "", email: "", message: "" });
       } else {
+        console.error("Web3Forms Error:", result);
+        alert(`Failed to send: ${result.message || "Unknown error"}`);
         setStatus("error");
       }
     } catch (error) {
