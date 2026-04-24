@@ -36,7 +36,7 @@ export const projects: Project[] = [
     date: "Current",
     deepDiveContent: {
       problemStatement: "Distributed caching often introduces complexity and consistency issues. This project aimed to build a high-performance, consistent-hashing based cache from first principles in C++.",
-      architectureDiagramUrl: "/placeholder-architecture.png",
+      architectureDiagramUrl: "/images/case-studies/distcache-1.png",
       challengesOvercome: [
         "Implementing consistent hashing to minimize key redistribution during node churn.",
         "Ensuring thread safety in high-concurrency access patterns.",
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     date: "Current",
     deepDiveContent: {
       problemStatement: "Building a cross-platform mobile game without a heavyweight engine like Unity or Unreal. The goal was to create an engaging auto-battler experience using web technologies and Capacitor to bridge to native iOS and Android platforms.",
-      architectureDiagramUrl: "/placeholder-architecture.png",
+      architectureDiagramUrl: "/images/case-studies/bounce-arena-1.png",
       challengesOvercome: [
         "Implementing smooth physics-based ball combat with vanilla JavaScript.",
         "Bridging web gameplay to native mobile via Capacitor for iOS and Android.",
@@ -88,7 +88,7 @@ export const projects: Project[] = [
     date: "Current",
     deepDiveContent: {
       problemStatement: "People with OCD or general anxiety often experience intrusive doubts about whether they turned off appliances before leaving home. Existing reminder apps don't address this specific need — there's no way to capture visual proof and associate it with a specific appliance check.",
-      architectureDiagramUrl: "/placeholder-architecture.png",
+      architectureDiagramUrl: "/images/case-studies/stove-app-1.png",
       challengesOvercome: [
         "Designing a camera-based verification flow that stores timestamped photos linked to specific appliances.",
         "Implementing Supabase Auth with Expo Router for seamless cross-platform authentication.",
@@ -116,7 +116,7 @@ export const projects: Project[] = [
     date: "Dec 2025",
     deepDiveContent: {
       problemStatement: "LeetCode-style platforms are great for practice but lack guided progression and visual explanations. This project creates an advent calendar-style learning path from fundamentals (arrays, strings) through advanced topics (DP, backtracking, Union-Find) with interactive visualizations for each algorithm.",
-      architectureDiagramUrl: "/placeholder-architecture.png",
+      architectureDiagramUrl: "/images/case-studies/dsa-advent-1.png",
       challengesOvercome: [
         "Building interactive algorithm visualizations with Framer Motion for data structures like trees, graphs, and arrays.",
         "Importing Python solution files as static assets via webpack raw-loader for syntax-highlighted display.",
@@ -144,7 +144,7 @@ export const projects: Project[] = [
     date: "Late Summer 2025",
     deepDiveContent: {
       problemStatement: "The lottery is random, but humans love finding patterns. This project serves as an educational tool to demonstrate statistical analysis and pattern recognition techniques on large datasets.",
-      architectureDiagramUrl: "/placeholder-architecture.png",
+      architectureDiagramUrl: "/images/case-studies/powerball-1.png",
       challengesOvercome: [
         "Processing and cleaning decades of historical lottery data.",
         "Visualizing complex multi-dimensional frequency distributions.",
@@ -172,7 +172,7 @@ export const projects: Project[] = [
     date: "Mid 2025",
     deepDiveContent: {
       problemStatement: "Setting up a production-ready e-commerce store is time-consuming and repetitive. Developers need a solid foundation that handles content, payments, and admin functions out of the box.",
-      architectureDiagramUrl: "/placeholder-architecture.png",
+      architectureDiagramUrl: "/images/case-studies/ecommerce-1.png",
       challengesOvercome: [
         "Integrating a drag-and-drop page builder (Puck) with Next.js App Router.",
         "Creating a unified type system shared between database and frontend forms.",
@@ -198,7 +198,7 @@ export const projects: Project[] = [
     date: "Mid 2025",
     deepDiveContent: {
       problemStatement: "Organizations struggle to track shared expenses and manage budgets across multiple teams. Existing solutions are either too simple (personal finance) or too complex (enterprise ERPs).",
-      architectureDiagramUrl: "/placeholder-architecture.png",
+      architectureDiagramUrl: "/images/case-studies/expense-tracker-1.png",
       challengesOvercome: [
         "Implementing multi-tenancy with row-level security in PostgreSQL.",
         "Designing a role-based access control (RBAC) system for nuanced permissions.",
@@ -224,7 +224,7 @@ export const projects: Project[] = [
     date: "Mid 2025",
     deepDiveContent: {
       problemStatement: "Most recipe sites are cluttered with ads and have poor search functionality. This project focused on a clean, user-centric experience with intelligent search and scaling.",
-      architectureDiagramUrl: "/placeholder-architecture.png",
+      architectureDiagramUrl: "/images/case-studies/recipe-blog-1.png",
       challengesOvercome: [
         "Implementing fuzzy search with PostgreSQL full-text search.",
         "Building a smart unit conversion system for recipe scaling.",
