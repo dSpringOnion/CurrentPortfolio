@@ -26,11 +26,31 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setStatus("loading");
 
-    // Simulate API call
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-    }, 1500);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          // TODO: Replace this with your actual Web3Forms Access Key
+          access_key: "0adbcd00-a739-41ff-8c94-3ad4423db698",
+          ...formData
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
   };
 
   return (
@@ -161,10 +181,10 @@ const Contact: React.FC = () => {
                 <button
                   type="submit"
                   disabled={status === "loading" || status === "success"}
-                  className="group flex items-center gap-2 text-lg font-medium text-black dark:text-white hover:opacity-70 transition-opacity disabled:opacity-50"
+                  className={`group flex items-center gap-2 text-lg font-medium hover:opacity-70 transition-opacity disabled:opacity-50 ${status === "error" ? "text-red-500" : "text-black dark:text-white"}`}
                 >
-                  {status === "loading" ? "Sending..." : status === "success" ? "Message Sent!" : "Send Message"}
-                  {status === "idle" && <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />}
+                  {status === "loading" ? "Sending..." : status === "success" ? "Message Sent!" : status === "error" ? "Failed. Try Again?" : "Send Message"}
+                  {(status === "idle" || status === "error") && <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />}
                 </button>
               </div>
             </form>
