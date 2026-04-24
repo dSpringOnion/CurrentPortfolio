@@ -140,44 +140,29 @@ export const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({ project }) => 
                </div>
             </div>
 
-            {/* Screenshot Placeholders */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                {deepDiveContent.demoImages && deepDiveContent.demoImages.length > 0 ? (
-                  deepDiveContent.demoImages.map((img, idx) => (
-                    <div key={idx} className="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-1 border border-neutral-200 dark:border-neutral-800">
-                        <div 
-                          className="aspect-[4/3] bg-neutral-200 dark:bg-neutral-800 rounded-lg relative overflow-hidden flex flex-col items-center justify-center text-gray-500 gap-2 cursor-zoom-in group"
-                          onClick={() => setSelectedImage(img)}
-                        >
-                            <Image 
-                              src={img} 
-                              alt={`Project Screenshot ${idx + 1}`} 
-                              fill 
-                              className="object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                              <ZoomIn className="text-white drop-shadow-md" size={32} />
-                            </div>
-                        </div>
-                    </div>
-                  ))
-                ) : (
-                  <>
-                    <div className="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-1 border border-neutral-200 dark:border-neutral-800">
-                        <div className="aspect-[4/3] bg-neutral-200 dark:bg-neutral-800 rounded-lg flex flex-col items-center justify-center text-gray-500 gap-2">
-                            <ImageIcon size={32} className="opacity-20" />
-                            <span className="font-mono text-xs opacity-50">[Dashboard Screenshot]</span>
-                        </div>
-                    </div>
-                    <div className="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-1 border border-neutral-200 dark:border-neutral-800">
-                        <div className="aspect-[4/3] bg-neutral-200 dark:bg-neutral-800 rounded-lg flex flex-col items-center justify-center text-gray-500 gap-2">
-                            <ImageIcon size={32} className="opacity-20" />
-                            <span className="font-mono text-xs opacity-50">[Mobile View Screenshot]</span>
-                        </div>
-                    </div>
-                  </>
-                )}
-            </div>
+            {/* Screenshots */}
+            {deepDiveContent.demoImages && deepDiveContent.demoImages.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                {deepDiveContent.demoImages.map((img, idx) => (
+                  <div key={idx} className="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-1 border border-neutral-200 dark:border-neutral-800">
+                      <div 
+                        className="aspect-[4/3] bg-neutral-200 dark:bg-neutral-800 rounded-lg relative overflow-hidden flex flex-col items-center justify-center text-gray-500 gap-2 cursor-zoom-in group"
+                        onClick={() => setSelectedImage(img)}
+                      >
+                          <Image 
+                            src={img} 
+                            alt={`Project Screenshot ${idx + 1}`} 
+                            fill 
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                            <ZoomIn className="text-white drop-shadow-md" size={32} />
+                          </div>
+                      </div>
+                  </div>
+                ))}
+              </div>
+            )}
 
             <ul className="space-y-4">
               {deepDiveContent.challengesOvercome.map((challenge, idx) => (
