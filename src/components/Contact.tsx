@@ -27,21 +27,21 @@ const Contact: React.FC = () => {
     setStatus("loading");
 
     try {
-      const formPayload = new FormData(e.currentTarget);
-      formPayload.append("access_key", "0adbcd00-a739-41ff-8c94-3ad4423db698");
-
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("https://formspree.io/f/mykllazz", {
         method: "POST",
-        body: formPayload
+        headers: {
+          Accept: "application/json",
+        },
+        body: new FormData(e.currentTarget)
       });
 
       const result = await response.json();
-      if (result.success) {
+      if (response.ok) {
         setStatus("success");
         setFormData({ name: "", email: "", message: "" });
       } else {
-        console.error("Web3Forms Error:", result);
-        alert(`Failed to send: ${result.message || "Unknown error"}`);
+        console.error("Formspree Error:", result);
+        alert(`Failed to send: ${result.error || "Unknown error"}`);
         setStatus("error");
       }
     } catch (error) {
